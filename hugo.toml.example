@@ -1,0 +1,17 @@
+baseURL = 'https://yourname.github.io/my-blog/'
+defaultContentLanguage = 'en'
+title = 'My Blog'
+theme = 'papermod'
+
+[params]
+  env = "production"
+  title = "My Blog"
+  description = "Your blog description"
+  author = "yourname"
+  showReadingTime = true
+  showShareButtons = true
+  showPostNavLinks = true
+  showTags = true
+
+[outputs]
+  home = [ "HTML", "RSS", "JSON"]

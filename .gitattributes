@@ -1,0 +1,15 @@
+# Normalize line endings: store as LF in git, checkout as native
+* text=auto eol=lf
+
+# Ensure markdown and scripts are always LF
+*.md text eol=lf
+*.sh text eol=lf
+*.yml text eol=lf
+*.toml text eol=lf
+
+# Binary files — no conversion
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.webp binary
