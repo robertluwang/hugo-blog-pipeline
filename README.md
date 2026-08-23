@@ -20,9 +20,9 @@ hugo new site my-blog && cd my-blog && git init
 
 # 2. Add this pipeline
 curl -sL https://github.com/yourname/hugo-blog-pipeline/archive/main.tar.gz \
-  | tar xz --strip-components=1 --include='*/scripts' --include='*/.github' \
-    --include='*/publish.sh' --include='*/_templates' --include='*/.gitattributes' \
-    --include='*/.gitignore'
+  | tar xz --strip-components=1 --wildcards \
+    '*/scripts/*' '*/.github/*' '*/publish.sh' '*/_templates/*' \
+    '*/.gitattributes' '*/.gitignore'
 
 # 3. Add a theme (PaperMod shown, any theme works)
 git submodule add https://github.com/adityatelange/hugo-PaperMod.git themes/papermod
