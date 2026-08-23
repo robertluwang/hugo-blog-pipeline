@@ -210,7 +210,13 @@ A broken cover or missing `relative = true` fails step 2 and blocks deploy, rega
 - **Hugo** — any recent version, extended recommended. [Install guide](https://gohugo.io/installation/)
 - **Python 3 + Pillow** — for `fit-banner.py` and the dimension checks in `check-posts.sh`
   ```bash
+  python3 -m venv .venv
+  source .venv/bin/activate
   pip install pillow
+  ```
+  The venv lives in your blog repo (`.venv/` is already gitignored via `/resources/` convention — add it to `.gitignore` if your setup differs). Activate it before running `publish.sh` or `fit-banner.py`, or invoke directly:
+  ```bash
+  .venv/bin/python3 scripts/fit-banner.py --scan
   ```
   If Pillow is not installed, `new-post.sh --banner` falls back to a plain copy (no resize), and `check-posts.sh` skips the dimension/ratio warning (file-size check still works). Nothing breaks — you just lose the automatic fitting.
 - **Git**
