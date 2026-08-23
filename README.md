@@ -18,23 +18,41 @@ No CMS. No database. No block editor. Just markdown, git, and one command to pub
 # 1. Create your Hugo site (or clone an existing one)
 hugo new site my-blog && cd my-blog && git init
 
-# 2. Add this pipeline
+# 2. Add this pipeline (pick one)
+
+# Option A: git clone (recommended — lets you pull updates later)
+git clone https://github.com/robertluwang/hugo-blog-pipeline.git /tmp/hugo-blog-pipeline
+cp -r /tmp/hugo-blog-pipeline/scripts .
+cp -r /tmp/hugo-blog-pipeline/_templates .
+cp -r /tmp/hugo-blog-pipeline/.github .
+cp /tmp/hugo-blog-pipeline/publish.sh .
+cp /tmp/hugo-blog-pipeline/.gitattributes .
+cp /tmp/hugo-blog-pipeline/.gitignore .
+cp /tmp/hugo-blog-pipeline/hugo.toml.example .
+rm -rf /tmp/hugo-blog-pipeline
+
+# Option B: one-liner (no git clone needed)
 curl -sL https://github.com/robertluwang/hugo-blog-pipeline/archive/main.tar.gz \
   | tar xz --strip-components=1 --wildcards \
     '*/scripts/*' '*/.github/*' '*/publish.sh' '*/_templates/*' \
-    '*/.gitattributes' '*/.gitignore'
+    '*/.gitattributes' '*/.gitignore' '*/hugo.toml.example'
 
-# 3. Add a theme (PaperMod shown, any theme works)
+# 3. Set up Python venv for banner fitting
+python3 -m venv .venv
+source .venv/bin/activate
+pip install pillow
+
+# 4. Add a theme (PaperMod shown, any theme works)
 git submodule add https://github.com/adityatelange/hugo-PaperMod.git themes/papermod
 
-# 4. Configure hugo.toml (see hugo.toml.example)
+# 5. Configure hugo.toml (see hugo.toml.example)
 cp hugo.toml.example hugo.toml
 # Edit: baseURL, title, description, author
 
-# 5. Create your first post
+# 6. Create your first post
 ./scripts/new-post.sh "My First Post" --slug first-post
 
-# 6. Push and deploy
+# 7. Push and deploy
 git add -A && git commit -m "initial setup"
 git remote add origin git@github.com:yourname/my-blog.git
 git push -u origin main
