@@ -207,10 +207,14 @@ A broken cover or missing `relative = true` fails step 2 and blocks deploy, rega
 
 ## Requirements
 
-- Hugo (any recent version, extended recommended)
-- Python 3 + Pillow (for `fit-banner.py`)
-- Git
-- A GitHub repo with Pages enabled (source: GitHub Actions)
+- **Hugo** — any recent version, extended recommended. [Install guide](https://gohugo.io/installation/)
+- **Python 3 + Pillow** — for `fit-banner.py` and the dimension checks in `check-posts.sh`
+  ```bash
+  pip install pillow
+  ```
+  If Pillow is not installed, `new-post.sh --banner` falls back to a plain copy (no resize), and `check-posts.sh` skips the dimension/ratio warning (file-size check still works). Nothing breaks — you just lose the automatic fitting.
+- **Git**
+- A **GitHub repo** with Pages enabled (Settings → Pages → Source → GitHub Actions)
 
 ## License
 
