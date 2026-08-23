@@ -19,7 +19,7 @@ No CMS. No database. No block editor. Just markdown, git, and one command to pub
 hugo new site my-blog && cd my-blog && git init
 
 # 2. Add this pipeline
-curl -sL https://github.com/yourname/hugo-blog-pipeline/archive/main.tar.gz \
+curl -sL https://github.com/robertluwang/hugo-blog-pipeline/archive/main.tar.gz \
   | tar xz --strip-components=1 --wildcards \
     '*/scripts/*' '*/.github/*' '*/publish.sh' '*/_templates/*' \
     '*/.gitattributes' '*/.gitignore'
