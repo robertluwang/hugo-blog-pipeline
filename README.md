@@ -54,6 +54,7 @@ cp hugo.toml.example hugo.toml
 
 # 7. Push and deploy
 git add -A && git commit -m "initial setup"
+git branch -M main
 git remote add origin git@github.com:yourname/my-blog.git
 git push -u origin main
 ```
